@@ -77,8 +77,8 @@ df.fillna(-99999, inplace=True)
 
 # Here nth day is 3rd day after today
 #forecast_out = int(math.ceil(0.0009*len(df)))
-# 33rd day
-forecast_out = int(math.ceil(0.01*len(df)))
+# 330rd day
+forecast_out = int(math.ceil(0.1*len(df)))
 print ">> Forecast day:", forecast_out
 
 # Create new labels column with forcasted price of nth day
@@ -93,15 +93,13 @@ print df.head()
 
 # Drop labels, and only feature data in numpy array
 X = np.array(df.drop([LABEL], 1))
-# Remove last few rows for which we dont have forecast prices
-X = X[:-forecast_out]
-
 # ??????
 X = preprocessing.scale(X)
-
 # last few rows for which we dont have forecast prices
 # we can use it to forcast the price
 X_lately = X[-forecast_out:] 
+# Remove last few rows for which we dont have forecast prices
+X = X[:-forecast_out]
 #print X
 #print X_lately
 
@@ -144,7 +142,7 @@ print "Accuracy:", accuracy
 
 # Lets predict
 Y_predict = clf.predict(X_lately)
-print Y_predict
+#print Y_predict
 #YY_predict = clf.predict([x_test[0]])
 #print x_test[0], YY_predict
 
@@ -169,8 +167,10 @@ for i in Y_predict:
     nname = 'zzkau' + "-%s" % num
     df.loc[nname] = [np.nan for _ in range(len(df.columns)-1)] + [i]
 
-print df.head()
-print df.tail()
+#print df.head()
+#print df.tail()
+
+style.use('ggplot')
 
 df[CLOSE].plot()
 df[PREDICT].plot()
