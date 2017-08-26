@@ -46,7 +46,7 @@ def k_near_nbr(data, predict, k=3):
 # dataset from: 
 # http://archive.ics.uci.edu/ml/datasets/Breast+Cancer+Wisconsin+%28Original%29
 # Add header below
-df = pd.read_csv('./data/breast-cancer-wisconsin.data')
+df = pd.read_csv('../data/breast-cancer-wisconsin.data')
 t_id = 'id'
 t_class = 'class'
 # id, clump_thickness, unif_cell_size, unif_cell_shape, marginal_adhesion, single_cell_size, bare_neuclei, bland_chromatin, normal_neuclei, mitoses, class  

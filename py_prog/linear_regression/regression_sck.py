@@ -29,7 +29,7 @@ import pickle
 
 DOWNLOAD_DATA = False
 TRAIN_MODEL = False 
-LRG_MODEL = "./LinearRegressionModel.pickel"
+LRG_MODEL = "../data/LinearRegressionModel.pickel"
 
 # quandl api key
 quandl.ApiConfig.api_key = 'PySd8mej_Zbav262nViB'
@@ -37,9 +37,9 @@ quandl.ApiConfig.api_key = 'PySd8mej_Zbav262nViB'
 # data frame from quandl for google stock price and volume data
 if DOWNLOAD_DATA:
     df = quandl.get('WIKI/GOOGL')
-    df.to_csv("./google_stock_quandl.csv")
+    df.to_csv("../data/google_stock_quandl.csv")
 else:
-    df = pd.read_csv("./google_stock_quandl.csv")
+    df = pd.read_csv("../data/google_stock_quandl.csv")
 
 print ">> Quandl GOOGL Stock data:"
 print df.head()
